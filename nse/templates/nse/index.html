@@ -1,0 +1,23 @@
+<html>
+<head>
+   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+        for i in stock_list:
+        var tr={
+            x:
+        }
+    </script>
+</head>
+<body>
+{% if stock_list %}
+    <ul>
+    {% for stock in stock_list %}
+        <li><a >{{ stock.curtime }}</a></li>
+        <li><a >{{ stock.averageprice }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</body>
+</html>
