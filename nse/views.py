@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from .models import stocksData
 from django.template import loader
 # Create your views here.
@@ -14,4 +14,20 @@ def showgraph(request):
     context = {
         'stock_list': stklist,
     }
-    return HttpResponse(template.render(context, request))
+    a=[]
+    b=[]
+    c=[]
+    d=[]
+    for i in stklist:
+        a.append(i.curtime)
+        b.append(i.averageprice)
+        c.append(i.buyprice1)
+        d.append(i.sellprice1)
+    res={
+        'ct':a,
+        'ap':b,
+        'bp':c,
+        'sp':d,
+    }
+    return JsonResponse(res)
+    #return HttpResponse(template.render(context, request))
